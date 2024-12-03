@@ -1,11 +1,11 @@
-@font-face {
+/* @font-face {
   font-family: 'icomoon';
   src: url("../fonts/icomoon/icomoon.eot?srf3rx");
   src: url("../fonts/icomoon/icomoon.eot?srf3rx#iefix") format("embedded-opentype"), url("../fonts/icomoon/icomoon.ttf?srf3rx") format("truetype"), url("../fonts/icomoon/icomoon.woff?srf3rx") format("woff"), url("../fonts/icomoon/icomoon.svg?srf3rx#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
 }
-@font-face { font-family: Amsterdam; src: url('../fonts/AmsterdamOne.ttf'); } 
+@font-face { font-family: Amsterdam; src: url('../fonts/AmsterdamOne.ttf'); }  */
 /* =======================================================
 *
 * 	Template Style 
@@ -428,7 +428,7 @@ h1, h2, h3, h4, h5, h6, figure {
   padding-bottom: 20px;
   text-transform: uppercase;
   letter-spacing: 2px;
-  font-family: Sofia Sans Condensed;
+  /* font-family: Sofia Sans Condensed; */
   font-size: 25px;
 }
 #fh5co-counter .event-wrap p, #fh5co-counter .event-wrap span,
@@ -436,13 +436,13 @@ h1, h2, h3, h4, h5, h6, figure {
 #fh5co-event .event-wrap span {
   display: block;
   color: rgba(0, 0, 0, 0.8);
-  font-family: Sofia Sans Condensed;
-  font-size: 20px;
+  /* font-family: Sofia Sans Condensed; */
+  font-size: 16px;
 }
 #fh5co-counter .event-wrap i,
 #fh5co-event .event-wrap i {
   color: rgb(0, 0, 0);
-  font-size: 20px;
+  font-size: 16px;
 }
 #fh5co-counter .event-wrap .event-col,
 #fh5co-event .event-wrap .event-col {
@@ -850,7 +850,7 @@ form label {
   margin-bottom: 0px;
   font-size: 65px;
   line-height: 1.5;
-  font-family: "Amsterdam", Arial, serif;
+  font-family: Engagement;
 }
 @media screen and (max-width: 768px) {
   #fh5co-header .display-tc h1,
@@ -1025,7 +1025,7 @@ form label {
   }
 }
 .couple-half h3 {
-  font-family: "Amsterdam", Arial, serif;
+  font-family: Engagement;
   color: #646464;
   font-size: 30px;
 }
@@ -1142,7 +1142,7 @@ form label {
   line-height: 1.5;
   font-weight: bold;
   color: #646464;
-  font-family: "Amsterdam", Arial, serif;
+  font-family: Engagement;
 }
 @media screen and (max-width: 768px) {
   .fh5co-heading h2 {
@@ -1804,4 +1804,184 @@ form label {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+/* Wishes Form Styling */
+#wishForm .form-control {
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#wishForm textarea.form-control {
+    height: 150px;
+    resize: none;
+}
+
+/* Wishes Display Styling */
+#fh5co-testimonial {
+    background: #f7f7f7;
+    padding: 7em 0;
+}
+
+.wish-item {
+    background: #fff;
+    padding: 30px;
+    border-radius: 4px;
+    margin: 0 15px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.wish-item h3 {
+    font-size: 24px;
+    margin-bottom: 5px;
+    color: #000;
+}
+
+.wish-item .wish-author {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #666;
+}
+
+.wish-item .wish-message {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #333;
+}
+
+#fh5co-couple-story {
+    padding: 7em 0;
+}
+
+#fh5co-couple-story .couple-heading {
+    margin-bottom: 3em;
+}
+
+.timeline {
+    list-style: none;
+    padding: 0;
+    position: relative;
+}
+
+.timeline:before {
+    top: 20px;
+    bottom: 0;
+    position: absolute;
+    content: " ";
+    width: 2px;
+    background-color: #f2f3f7;
+    left: 50%;
+    margin-left: -1px;
+}
+
+.timeline > li {
+    margin-bottom: 40px;
+    position: relative;
+    width: 50%;
+    float: left;
+    clear: left;
+}
+
+.timeline > li:before,
+.timeline > li:after {
+    content: " ";
+    display: table;
+}
+
+.timeline > li:after {
+    clear: both;
+}
+
+.timeline > li.timeline-inverted {
+    float: right;
+    clear: right;
+}
+
+.timeline > li:not(.timeline-inverted) {
+    padding-right: 90px;
+}
+
+.timeline > li.timeline-inverted {
+    padding-left: 90px;
+}
+
+.timeline-badge {
+    width: 170px;
+    height: 170px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -85px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border: 7px solid #f2f3f7;
+}
+
+.timeline-panel {
+    padding: 30px;
+    background: #fff;
+    position: relative;
+    border-radius: 4px;
+}
+
+.timeline-title {
+    margin-top: 0;
+    color: #000;
+    font-size: 20px;
+}
+
+.date {
+    display: block;
+    margin-bottom: 20px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.timeline-body > p {
+    margin-bottom: 0;
+    color: #999999;
+}
+
+@media (max-width: 992px) {
+    .timeline > li:not(.timeline-inverted) {
+        padding-right: 0;
+    }
+    .timeline > li.timeline-inverted {
+        padding-left: 0;
+    }
+    .timeline-badge {
+        width: 120px;
+        height: 120px;
+        margin-left: -60px;
+    }
+}
+
+#fh5co-couple .couple-half {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 4px;
+    margin-bottom: 30px;
+}
+
+#fh5co-couple .couple-half img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 20px;
+    display: block;
+}
+
+#fh5co-couple .desc-groom,
+#fh5co-couple .desc-bride {
+    text-align: center;
+}
+
+#fh5co-couple h3 {
+    color: #000;
+    margin-bottom: 10px;
+}
 
