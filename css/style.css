@@ -11,6 +11,29 @@
 * 	Template Style 
 *
 * ======================================================= */
+.language-switch button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 400;
+  cursor: pointer;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1000; /* Ensure the button is above other elements */
+
+}
+
+.language-switch button:hover {
+  color: #646464;
+}
+
+@media screen and (max-width: 768px) {
+  .language-switch button {
+      padding: 10px;
+  }
+}
+
 body {
   font-family: "Work Sans", Arial, sans-serif;
   font-weight: 400;
@@ -18,6 +41,11 @@ body {
   line-height: 1.7;
   color: #828282;
   background: #fff;
+}
+.great-vibes-regular {
+  font-family: "Great Vibes", cursive;
+  font-weight: 400;
+  font-style: normal;
 }
 
 #page {
@@ -104,7 +132,7 @@ h1, h2, h3, h4, h5, h6, figure {
   margin: 0;
   padding: 0;
   line-height: 40px;
-  font-family: "Sofia Sans Condensed";
+  font-family: "Work Sans";
 }
 .fh5co-nav a {
   padding: 5px 10px;
@@ -127,7 +155,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 .fh5co-nav ul li a {
   font-size: 20px;
-  font-family: Sofia Sans Condensed;
+  font-family: Work Sans;
   padding: 30px 10px;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.5);
@@ -442,7 +470,7 @@ h1, h2, h3, h4, h5, h6, figure {
 #fh5co-counter .event-wrap i,
 #fh5co-event .event-wrap i {
   color: rgb(0, 0, 0);
-  font-size: 16px;
+  font-size: 20px;
 }
 #fh5co-counter .event-wrap .event-col,
 #fh5co-event .event-wrap .event-col {
@@ -850,7 +878,7 @@ form label {
   margin-bottom: 0px;
   font-size: 65px;
   line-height: 1.5;
-  font-family: Engagement;
+  font-family: 'Dancing Script',;
 }
 @media screen and (max-width: 768px) {
   #fh5co-header .display-tc h1,
@@ -872,7 +900,7 @@ form label {
   font-size: 20px;
   line-height: 1.5;
   margin-top: 20px;
-  font-family: Engagement;
+  font-family: "Great Vibes";
 }
 @media screen and (max-width: 480px) {
   #fh5co-header .display-tc h2,
@@ -1025,7 +1053,7 @@ form label {
   }
 }
 .couple-half h3 {
-  font-family: Engagement;
+  font-family: "Great Vibes";
   color: #646464;
   font-size: 30px;
 }
@@ -1142,7 +1170,7 @@ form label {
   line-height: 1.5;
   font-weight: bold;
   color: #646464;
-  font-family: Engagement;
+  font-family: "Great Vibes";
 }
 @media screen and (max-width: 768px) {
   .fh5co-heading h2 {
