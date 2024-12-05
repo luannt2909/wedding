@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOMContentLoaded');
     // Initialize wishes array from localStorage or empty array if none exists
     let wishes = JSON.parse(localStorage.getItem('wishes') || '[]');
     
@@ -15,33 +16,54 @@ document.addEventListener('DOMContentLoaded', function() {
         container.innerHTML = ''; // Clear existing wishes
 
         wishes.forEach(wish => {
+            // const wishHTML = `
+            //     <div class="item">
+            //         <div class="wish-item">
+            //             <!-- <h3>${wish.title}</h3> -->
+            //             <p class="wish-author">- ${wish.name}</p>
+            //             <p class="wish-message">${wish.message}</p>
+            //         </div>
+            //     </div>
+            // `;
             const wishHTML = `
-                <div class="item">
-                    <div class="wish-item">
-                        <h3>${wish.title}</h3>
-                        <p class="wish-author">- ${wish.name}</p>
-                        <p class="wish-message">${wish.message}</p>
+            <div class="item">
+                <div class="wish-item">
+                    <div class="wish-content">
+                        <p class="wish-message">"${wish.message}"</p>
+                        <div class="wish-footer">
+                            <p class="wish-author">From: ${wish.name}</p>
+                            <p class="wish-date">${new Date(wish.date).toLocaleDateString()}</p>
+                        </div>
+                    </div>
+                    <div class="wish-decorations">
+                            <span class="wish-icon">✨</span>
                     </div>
                 </div>
+            </div>
             `;
             container.innerHTML += wishHTML;
         });
 
-        // Initialize or refresh the carousel
-        if($('.owl-carousel').data('owlCarousel')) {
-            $('.owl-carousel').data('owlCarousel').destroy();
+         // Properly destroy and reinitialize the carousel
+        const $carousel = $('.owl-carousel');
+        if ($carousel.data('owlCarousel')) {
+            $carousel.data('owlCarousel').destroy();
         }
-        $('.owl-carousel').owlCarousel({
-            items: 1,
-            loop: true,
-            margin: 0,
-            responsiveClass: true,
-            nav: false,
-            dots: true,
-            autoplay: true,
-            smartSpeed: 500,
-            autoplayTimeout: 4000,
-        });
+    
+        // Wait for DOM update before reinitializing
+        setTimeout(() => {
+            $carousel.owlCarousel({
+                items: 1,
+                loop: wishes.length > 1, // Only enable loop if there's more than one wish
+                margin: 0,
+                responsiveClass: true,
+                nav: false,
+                dots: true,
+                autoplay: true,
+                smartSpeed: 500,
+                autoplayTimeout: 4000
+            });
+        }, 0);
     }
 
     // Handle form submission
@@ -51,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const newWish = {
             name: document.getElementById('name').value,
-            title: document.getElementById('title').value,
+            // title: document.getElementById('title').value,
             message: document.getElementById('message').value,
             date: new Date().toISOString()
         };

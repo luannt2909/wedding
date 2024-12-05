@@ -529,6 +529,7 @@ h1, h2, h3, h4, h5, h6, figure {
   -moz-border-radius: 4px;
   -ms-border-radius: 4px;
   border-radius: 4px;
+  background-color: #fff;
 }
 .timeline > li > .timeline-panel:before {
   position: absolute;
@@ -878,7 +879,7 @@ form label {
   margin-bottom: 0px;
   font-size: 65px;
   line-height: 1.5;
-  font-family: 'Dancing Script',;
+  font-family: 'Work Sans',;
 }
 @media screen and (max-width: 768px) {
   #fh5co-header .display-tc h1,
@@ -917,7 +918,8 @@ form label {
   color: #646464;
   border: none !important;
   font-size: 16px;
-  font-family: Sofia Sans Condensed;
+  /* font-family: Sofia Sans Condensed; */
+  font-family: 'Work Sans';
   text-transform: uppercase;
 }
 #fh5co-header .display-tc .btn:hover,
@@ -1159,7 +1161,7 @@ form label {
 }
 
 .fh5co-heading {
-  margin-bottom: 5em;
+  margin-bottom: 2em;
 }
 .fh5co-heading.fh5co-heading-sm {
   margin-bottom: 2em;
@@ -1851,32 +1853,73 @@ form label {
 }
 
 .wish-item {
-    background: #fff;
-    padding: 30px;
-    border-radius: 4px;
-    margin: 0 15px;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  background: linear-gradient(145deg, #ffffff, #f5f5f5);
+  border-radius: 15px;
+  padding: 40px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  margin: 40px;
+  position: relative;
+  transition: transform 0.3s ease;
 }
 
-.wish-item h3 {
-    font-size: 24px;
-    margin-bottom: 5px;
-    color: #000;
+.wish-item:hover {
+  transform: translateY(-5px);
 }
 
-.wish-item .wish-author {
-    font-size: 18px;
-    margin-bottom: 20px;
-    color: #666;
+.wish-content {
+  position: relative;
+  z-index: 1;
 }
 
-.wish-item .wish-message {
-    font-size: 16px;
-    line-height: 1.8;
-    color: #333;
+.wish-message {
+  font-size: 1.8rem;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 20px;
+  font-style: italic;
 }
 
+.wish-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.wish-author {
+  font-weight: 600;
+  color: #666;
+  font-size: 1.8rem;
+}
+
+.wish-date {
+  color: #999;
+  font-size: 1.8rem;
+}
+
+.wish-decorations {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+}
+
+.wish-icon {
+  font-size: 1.8rem;
+  opacity: 0.8;
+}
+
+/* Optional: Add animation for new wishes */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.item {
+  animation: fadeIn 0.5s ease-out;
+}
+/* 
 #fh5co-couple-story {
     padding: 7em 0;
 }
@@ -2012,4 +2055,4 @@ form label {
     color: #000;
     margin-bottom: 10px;
 }
-
+ */
