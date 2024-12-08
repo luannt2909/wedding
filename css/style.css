@@ -326,8 +326,11 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 
 .fh5co-cover {
-  height: 1000px;
+  height: 100%;
   background-size: cover;
+  /* background-image: url("../images/bg.jpg"); */
+  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../images/gallery/ANH_3001.jpg");
+
   background-repeat: no-repeat;
   position: relative;
   width: 100%;
@@ -357,6 +360,12 @@ h1, h2, h3, h4, h5, h6, figure {
   width: 100%;
 }
 @media screen and (max-width: 768px) {
+  .fh5co-cover {
+    background-size: cover;
+    height: 100%;
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../images/gallery/ANH_2871.jpg");
+    
+  }
   .fh5co-cover .display-t,
   .fh5co-cover .display-tc {
     height: 600px;
@@ -432,7 +441,9 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 #fh5co-counter .event-wrap,
 #fh5co-event .event-wrap {
-  border: 2px solid rgba(0, 0, 0, 0.5);
+  /* border: 2px solid rgba(0, 0, 0, 0.5); */
+  border: 1px solid #fff;
+  background-color: #fff;
   padding: 30px;
   width: 100%;
   float: left;
@@ -478,6 +489,11 @@ h1, h2, h3, h4, h5, h6, figure {
   float: left;
   margin-bottom: 30px;
 }
+#fh5co-event .event-wrap .event-row {
+  width: 100%;
+  float: left;
+  margin-bottom: 30px;
+}
 
 #fh5co-counter {
   height: 600px;
@@ -486,6 +502,13 @@ h1, h2, h3, h4, h5, h6, figure {
   #fh5co-counter {
     height: auto;
   }
+}
+
+#fh5co-couple-story {
+  background-image: url("../images/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .timeline {
@@ -588,9 +611,9 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 @media screen and (max-width: 480px) {
   .timeline > li > .timeline-badge {
-    width: 60px;
-    height: 60px;
-    margin-left: -20px !important;
+    width: 90px;
+    height: 90px;
+    margin-left: -30px !important;
   }
 }
 .timeline > li.timeline-inverted > .timeline-panel {
@@ -772,7 +795,50 @@ h1, h2, h3, h4, h5, h6, figure {
     width: 100%;
   }
 }
+.gallery-masonry {
+  columns: 4;
+  column-gap: 0;
+}
 
+.gallery-item {
+  break-inside: avoid;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+@media screen and (max-width: 1200px) {
+  .gallery-masonry {
+      columns: 3;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .gallery-masonry {
+      columns: 2;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .gallery-masonry {
+      columns: 1;
+  }
+}
 #map {
   width: 100%;
   height: 500px;
@@ -1023,7 +1089,7 @@ form label {
 
 .heart {
   position: absolute;
-  top: 4em;
+  top: 6em;
   left: 0;
   right: 0;
   z-index: 99;
@@ -1065,12 +1131,12 @@ form label {
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   border-radius: 50%;
-  width: 150px;
-  height: 150px;
+  width: 240px;
+  height: 240px;
 }
 .couple-half .groom img, .couple-half .bride img {
-  width: 150px;
-  height: 150px;
+  width: 240px;
+  height: 240px;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
@@ -1117,6 +1183,20 @@ form label {
     text-align: center;
   }
 }
+
+/* Add keyframes for heart pulse animation */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 
 .feature-center {
   text-align: center;
@@ -2081,3 +2161,45 @@ form label {
       padding: 10px;
   }
 }
+/* 
+.audio {
+    position: fixed;
+    right: 15px;
+    bottom: 90px;
+    z-index: 998;
+    display: none;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.audio a {
+    color: #646464;
+    padding: 8px;
+    display: inline-block;
+}
+
+.audio.active {
+    display: block;
+}
+
+.audio a:hover {
+    color: #FF847C;
+}
+
+.audio.playing .icon-music:before {
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+} */
