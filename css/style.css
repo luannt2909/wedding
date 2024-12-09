@@ -329,7 +329,7 @@ h1, h2, h3, h4, h5, h6, figure {
   height: 100%;
   background-size: cover;
   /* background-image: url("../images/bg.jpg"); */
-  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../images/gallery/ANH_3001.jpg");
+  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../images/gallery/ANH_2437_1.jpg");
 
   background-repeat: no-repeat;
   position: relative;
@@ -1931,13 +1931,33 @@ form label {
     background: #f7f7f7;
     padding: 7em 0;
 }
+.fh5co-wishes {
+  background-image: url(../images/gallery/ANH_3007.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
 
+@media screen and (max-width: 768px) {
+  .fh5co-wishes {
+    background-image: url(../images/gallery/ANH_2955.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+}
 .wish-item {
-  background: linear-gradient(145deg, #ffffff, #f5f5f5);
+  background: linear-gradient(145deg, #656565, #918f8f);
   border-radius: 15px;
   padding: 40px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
   margin: 40px;
+  opacity: 0.8;
   position: relative;
   transition: transform 0.3s ease;
 }
@@ -1957,6 +1977,7 @@ form label {
   color: #333;
   margin-bottom: 20px;
   font-style: italic;
+  color: #fff;
 }
 
 .wish-footer {
@@ -1966,17 +1987,20 @@ form label {
   margin-top: 15px;
   padding-top: 15px;
   border-top: 1px solid #eee;
+  color: #fff;
 }
 
 .wish-author {
   font-weight: 600;
   color: #666;
   font-size: 1.8rem;
+  color: #fff;
 }
 
 .wish-date {
   color: #999;
   font-size: 1.8rem;
+  color: #fff;
 }
 
 .wish-decorations {
