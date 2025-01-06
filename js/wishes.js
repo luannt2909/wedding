@@ -1,30 +1,74 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOMContentLoaded');
-    // Initialize wishes array from localStorage or empty array if none exists
-    let wishes = JSON.parse(localStorage.getItem('wishes') || '[]');
     
-    // Function to add a new wish
+    // Function to fetch wishes from API
+    function fetchWishes() {
+        $.ajax({
+            url: 'https://api.luananh-wedding.com/wishes',
+            method: 'GET',
+            success: function(response) {
+                console.log(response);
+                // Assuming response contains wishes array
+                displayWishes(response.wishes);
+            },
+            error: function(xhr, status, error) {
+                console.log(xhr, status, error);
+                console.error('Error fetching wishes:', error);
+            }
+        });
+    }
+    
+    // Function to add a new wish via API
     function addWish(wish) {
-        wishes.unshift(wish); // Add to beginning of array
-        localStorage.setItem('wishes', JSON.stringify(wishes));
-        displayWishes();
+        $.ajax({
+            url: 'https://api.luananh-wedding.com/wishes',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(wish),
+            success: function(response) {
+                fetchWishes(); // Refresh wishes after successful addition
+            },
+            error: function(xhr, status, error) {
+                console.error('Error adding wish:', error);
+                alert('Failed to submit wish. Please try again.');
+            }
+        });
     }
 
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        return date.toLocaleDateString('vi-VN', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+    }
+
+    // For relative time (e.g., "2 minutes ago", "1 hour ago")
+    function formatRelativeDate(dateString) {
+        const date = new Date(dateString);
+        const now = new Date();
+        const diffTime = Math.abs(now - date);
+        const diffMinutes = Math.floor(diffTime / (1000 * 60));
+        const diffHours = Math.floor(diffTime / (1000 * 60 * 60));
+        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+        if (diffMinutes < 60) {
+            return `${diffMinutes} phút trước`;
+        } else if (diffHours < 24) {
+            return `${diffHours} giờ trước`;
+        } else {
+            return `${diffDays} ngày trước`;
+        }
+    }
     // Function to display wishes
-    function displayWishes() {
+    function displayWishes(wishes) {
         const container = document.getElementById('wishes-container');
         container.innerHTML = ''; // Clear existing wishes
 
         wishes.forEach(wish => {
-            // const wishHTML = `
-            //     <div class="item">
-            //         <div class="wish-item">
-            //             <!-- <h3>${wish.title}</h3> -->
-            //             <p class="wish-author">- ${wish.name}</p>
-            //             <p class="wish-message">${wish.message}</p>
-            //         </div>
-            //     </div>
-            // `;
             const wishHTML = `
             <div class="item">
                 <div class="wish-item">
@@ -32,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <p class="wish-message">"${wish.message}"</p>
                         <div class="wish-footer">
                             <p class="wish-author">From: ${wish.name}</p>
-                            <p class="wish-date">${new Date(wish.date).toLocaleDateString()}</p>
+                            <p class="wish-date">${formatRelativeDate(wish.created_at)}</p>
                         </div>
                     </div>
                     <div class="wish-decorations">
@@ -44,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
             container.innerHTML += wishHTML;
         });
 
-         // Properly destroy and reinitialize the carousel
+        // Properly destroy and reinitialize the carousel
         const $carousel = $('.owl-carousel');
         if ($carousel.data('owlCarousel')) {
             $carousel.data('owlCarousel').destroy();
@@ -73,18 +117,14 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const newWish = {
             name: document.getElementById('name').value,
-            // title: document.getElementById('title').value,
             message: document.getElementById('message').value,
             date: new Date().toISOString()
         };
 
         addWish(newWish);
         wishForm.reset();
-        
-        // Show success message
-        alert('Thank you for your wishes!');
     });
 
-    // Initial display of wishes
-    displayWishes();
+    // Initial fetch of wishes
+    fetchWishes();
 }); 
