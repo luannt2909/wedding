@@ -2190,7 +2190,8 @@ form label {
 }
  */
  .invitation-card {
-  margin: 40px 0;
+  /* margin: 0 40px 0 0; */
+  margin-bottom: 40px;
   padding: 20px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 8px;
