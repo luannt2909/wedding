@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const newWish = {
             name: document.getElementById('name').value,
             message: document.getElementById('message').value,
-            date: new Date().toISOString()
+            title: document.getElementById('name').value,
         };
 
         addWish(newWish);
