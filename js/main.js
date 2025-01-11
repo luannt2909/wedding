@@ -229,13 +229,26 @@
 	var parallax = function() {
 		$(window).stellar();
 	};
+	var showPopup = function() {
+		$('.gallery-masonry').magnificPopup({
+			delegate: 'a.gallery-popup', // child items selector, by clicking on it popup will open
+			type: 'image',
+			gallery: {
+				enabled: true, // set to true to enable gallery
+				navigateByImgClick: true,
+				preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+			},
+			image: {
+				titleSrc: 'alt' // Use the alt attribute of the image as the title in the popup
+			}
+		});
+	};
 
 	$(function(){
 		mobileMenuOutsideClick();
 		parallax();
 		offcanvasMenu();
 		burgerMenu();
-		// languageSwitcher();
 		contentWayPoint();
 		dropdown();
 		testimonialCarousel();
@@ -243,6 +256,7 @@
 		loaderPage();
 		counter();
 		counterWayPoint();
+		showPopup();
 	});
 
 
