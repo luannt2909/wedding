@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="wish-content">
                         <p class="wish-message">"${wish.message}"</p>
                         <div class="wish-footer">
-                            <p class="wish-author">From: ${wish.name}</p>
+                            <p class="wish-author">${wish.name}</p>
                             <p class="wish-date">${formatRelativeDate(wish.created_at)}</p>
                         </div>
                     </div>
