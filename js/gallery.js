@@ -62,7 +62,7 @@ const galleryImages = [
     'tanhon_2.jpg',
     'tanhon_6.jpg', //ngang
     // group 4
-    'ANH_2697.jpg', //ngang
+    'ZS_159.JPG', //ngang
     'ANH_2566.jpg',
     'tanhon_5.jpg',
     'tanhon_8.jpg', //ngang
