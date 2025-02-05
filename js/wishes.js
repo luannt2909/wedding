@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // For relative time (e.g., "2 minutes ago", "1 hour ago")
     function formatRelativeDate(dateString) {
-        const date = new Date(dateString);
+        const date = new Date(new Date(dateString).getTime() + (7 * 60 * 60 * 1000));
         const now = new Date();
         const diffTime = Math.abs(now - date);
         const diffMinutes = Math.floor(diffTime / (1000 * 60));
@@ -73,10 +73,10 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="item">
                 <div class="wish-item">
                     <div class="wish-content">
-                        <p class="wish-message">"${wish.message}"</p>
+                        <p class="wish-message great-vibes-regular" style="font-size: 20px;">"${wish.message}"</p>
                         <div class="wish-footer">
-                            <p class="wish-author">${wish.name}</p>
-                            <p class="wish-date">${formatRelativeDate(wish.created_at)}</p>
+                            <p class="wish-author great-vibes-regular" style="font-size: 20px;">${wish.name}</p>
+                            <p class="wish-date great-vibes-regular" style="font-size: 20px;">${formatRelativeDate(wish.created_at)}</p>
                         </div>
                     </div>
                     <div class="wish-decorations">
