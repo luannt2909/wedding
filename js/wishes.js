@@ -7,9 +7,10 @@ document.addEventListener('DOMContentLoaded', function() {
             url: 'https://api.luananh-wedding.com/wishes',
             method: 'GET',
             success: function(response) {
-                console.log(response);
                 // Assuming response contains wishes array
-                displayWishes(response.wishes);
+                wishes = response.wishes;
+                wishes.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+                displayWishes(wishes);
             },
             error: function(xhr, status, error) {
                 console.log(xhr, status, error);
