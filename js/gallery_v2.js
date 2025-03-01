@@ -51,8 +51,9 @@ document.addEventListener('DOMContentLoaded', function() {
         tabContainers[tabId].loading = true;
         const container = document.querySelector(`#${tabId}-container`);
         const loadMoreBtn = document.querySelector(`.gallery-load-more button[data-tab="${tabId}"]`);
+        loadMoreBtn.disabled = true;
         
-        fetch(`https://api.luananh-wedding.com/gallery/${tabId}?page=${tabContainers[tabId].page}&pageSize=${pageSize}`)
+        fetch(`http://localhost:8000/gallery/${tabId}?page=${tabContainers[tabId].page}&pageSize=${pageSize}`)
             .then(response => response.json())
             .then(data => {
                 data.images.forEach(image => {
@@ -82,6 +83,9 @@ document.addEventListener('DOMContentLoaded', function() {
             .catch(error => {
                 console.error('Error loading images:', error);
                 tabContainers[tabId].loading = false;
+            })
+            .finally(() => {
+                loadMoreBtn.disabled = false;
             });
     }
 
@@ -90,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
         div.className = 'gallery-item';
         div.innerHTML = `
             <a href="${image.url}" download="${image.caption || ''}" class="gallery-popup" title="${image.caption || ''}">
-                <img src="${image.url}" alt="${image.caption || ''}" loading="lazy">
+                <img src="${image.url}" alt="${image.caption || ''}" loading="eager">
             </a>
         `;
         return div;

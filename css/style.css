@@ -815,6 +815,7 @@ h1, h2, h3, h4, h5, h6, figure {
 } */
 .gallery-item {
   flex: 0 0 calc(25% - 10px); /* 4 items per row with 10px gap */
+  /* aspect-ratio: 3/4; */
   position: relative;
   margin-bottom: 10px;
 }
