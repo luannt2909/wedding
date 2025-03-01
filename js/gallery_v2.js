@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const loadMoreBtn = document.querySelector(`.gallery-load-more button[data-tab="${tabId}"]`);
         loadMoreBtn.disabled = true;
         
-        fetch(`http://localhost:8000/gallery/${tabId}?page=${tabContainers[tabId].page}&pageSize=${pageSize}`)
+        fetch(`https://api.luananh-wedding.com/gallery/${tabId}?page=${tabContainers[tabId].page}&pageSize=${pageSize}`)
             .then(response => response.json())
             .then(data => {
                 data.images.forEach(image => {
