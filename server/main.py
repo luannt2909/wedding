@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from datetime import datetime
@@ -55,3 +55,56 @@ def add_wish(wish: WeddingWish):
     wishes.append(wish.dict())
     write_wishes(wishes)
     return {"message": "Wish added successfully", "wish": wish}
+
+class GalleryImage(BaseModel):
+    url: str
+    caption: str
+
+@app.get("/gallery/{type}")
+def read_gallery_images(type: str, page: int = 1, pageSize: int = 12):
+    # image_dir = Path(f"/var/www/images/{type}")
+    # # image_dir = Path("/var/www/images/quang-ngai") / type
+    # image_dir = Path(f"/Users/nguyentanluan/Downloads/pre-wedding")
+    # image_path = type
+    # if type == "tan-hon":
+    #     image_dir = Path(f"/Users/nguyentanluan/Downloads/quang-ngai-v15")
+    #     image_path = "tan-hon"
+    # elif type == "pre-wedding":
+    #     image_dir = Path(f"/Users/nguyentanluan/Downloads/pre-wedding")
+    #     image_path = "pre-wedding"
+    # elif type == "vu-quy":
+    #     image_dir = Path(f"/Users/nguyentanluan/Downloads/vu-quy")
+    #     image_path = "vu-quy"
+    # elif type == "bao-hy":
+    #     image_dir = Path(f"/Users/nguyentanluan/Downloads/album-Mau-Tuoi")
+    #     image_path = "bao-hy"
+    # else:
+    #     raise HTTPException(status_code=404, detail=f"Gallery type {type} not found")
+    
+    image_dir = Path(f"/app/images/{type}")
+
+    if not image_dir.exists():
+        raise HTTPException(status_code=404, detail=f"Gallery type {type} not found")
+        
+    # Get all image files from directory
+    image_files = []
+    for ext in ['.jpg', '.jpeg', '.png', '.JPG', '.JPEG', '.PNG']:
+        image_files.extend(list(image_dir.glob(f'*{ext}')))
+    
+    # Sort by filename
+    image_files.sort()
+    
+    # Calculate pagination
+    start_idx = (page - 1) * pageSize
+    end_idx = start_idx + pageSize
+    page_images = image_files[start_idx:end_idx]
+    
+    # Convert to list of image objects
+    images = []
+    for img_path in page_images:
+        images.append({
+            "url": f"https://api.luananh-wedding.com/images/{type}/{img_path.name}",
+            "caption": img_path.stem
+        })
+        
+    return {"images": images}

@@ -809,12 +809,61 @@ h1, h2, h3, h4, h5, h6, figure {
     width: 100%;
   }
 }
-.gallery-masonry {
+/* .gallery-masonry {
+  columns: 4;
+  column-gap: 0;
+} */
+.gallery-item {
+  flex: 0 0 calc(25% - 10px); /* 4 items per row with 10px gap */
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 992px) {
+  .gallery-item {
+    flex: 0 0 calc(33.333% - 10px); /* 3 items per row */
+  }
+  .gallery-item img {
+    height: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .gallery-item {
+    flex: 0 0 calc(50% - 10px); /* 2 items per row */
+  }
+  .gallery-item img {
+    height: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .gallery-item {
+    flex: 0 0 100%; /* 1 item per row */
+  }
+  .gallery-item img {
+    height: 100%;
+  }
+}
+
+.gallery-masonry-noi-bat {
   columns: 4;
   column-gap: 0;
 }
-
-.gallery-item {
+ 
+ .gallery-item-noi-bat {
   break-inside: avoid;
   padding: 0;
   margin: 0;
@@ -823,7 +872,7 @@ h1, h2, h3, h4, h5, h6, figure {
   border-radius: 5px;
 }
 
-.gallery-item img {
+.gallery-item-noi-bat img {
   width: 100%;
   height: auto;
   display: block;
@@ -832,27 +881,27 @@ h1, h2, h3, h4, h5, h6, figure {
   padding: 2px;
 }
 
-.gallery-item:hover img {
+.gallery-item-noi-bat:hover img {
   transform: scale(1.05);
 }
 
 @media screen and (max-width: 1200px) {
-  .gallery-masonry {
+  .gallery-masonry-noi-bat {
       columns: 3;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .gallery-masonry {
+  .gallery-masonry-noi-bat {
       columns: 2;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .gallery-masonry {
+  .gallery-masonry-noi-bat {
       columns: 1;
   }
-}
+} 
 
 #showMoreBtn {
   padding: 10px 20px;
@@ -1073,6 +1122,10 @@ form label {
 
 #fh5co-testimonial,
 #fh5co-services,
+.fh5co-section {
+  padding: 2em 0;
+  clear: both;
+}
 #fh5co-started,
 #fh5co-footer,
 #fh5co-event,
@@ -2268,4 +2321,81 @@ form label {
     100% {
         transform: translateY(100vh) rotate(360deg);
     }
+}
+
+/* Add after the existing gallery styles around line 813 */
+.gallery-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.gallery-tab {
+  padding: 10px 20px;
+  margin: 0 5px;
+  cursor: pointer;
+  border: 2px solid #646464;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  font-family: 'Great Vibes', cursive;
+  font-size: 20px;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .gallery-tab {
+    font-size: 16px;
+    padding: 5px 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .gallery-tab {
+    font-size: 16px;
+    padding: 5px 10px;
+  }
+}
+
+.gallery-tab.active {
+  background: #646464;
+  color: white;
+}
+
+.gallery-tab:hover {
+  background: #646464;
+  color: white;
+}
+
+.gallery-content {
+  display: none;
+}
+
+.gallery-content.active {
+  display: block;
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Modify the existing gallery-masonry class */
+/* .gallery-masonry {
+  columns: 4;
+  column-gap: 10px;
+  padding: 0 10px;
+} */
+
+.gallery-masonry {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0 10px;
+}
+
+.gallery-load-more {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.gallery-load-more button {
+  padding: 10px 30px;
+  font-family: 'Great Vibes', cursive;
+  font-size: 20px;
 }

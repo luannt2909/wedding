@@ -74,7 +74,7 @@ let currentLoadedIndex = 0;
 
 function createGalleryItem(imageName) {
     return `
-        <div class="gallery-item" data-animate-effect="fadeIn">
+        <div class="gallery-item-noi-bat" data-animate-effect="fadeIn">
             <a href="images/gallery/${imageName}" class="gallery-popup">
                 <img src="images/gallery/${imageName}" alt="Gallery Image">
             </a>
@@ -85,16 +85,26 @@ function createGalleryItem(imageName) {
 const INITIAL_IMAGES_COUNT = 24; // Show first 12 images initially
 
 function initializeGallery() {
-    const container = document.getElementById('gallery-container');
+    const container = document.getElementById('noi-bat-container');
     const initialImages = galleryImages.slice(0, INITIAL_IMAGES_COUNT);
     const galleryHTML = initialImages.map(createGalleryItem).join('');
     container.innerHTML = galleryHTML;
     currentLoadedIndex = INITIAL_IMAGES_COUNT;
+    // Reinitialize Magnific Popup
+    $('.gallery-masonry-noi-bat').magnificPopup({
+        delegate: 'a.gallery-popup',
+        type: 'image',
+        gallery: {
+            enabled: true,
+            navigateByImgClick: true,
+            preload: [0, 1]
+        }
+    });
     updateShowMoreButton();
 }
 
 function showMoreImages() {
-    const container = document.getElementById('gallery-container');
+    const container = document.getElementById('noi-bat-container');
     const nextImages = galleryImages.slice(currentLoadedIndex, currentLoadedIndex + IMAGES_PER_LOAD).map(createGalleryItem).join('');
     container.innerHTML += nextImages;
     currentLoadedIndex += IMAGES_PER_LOAD;
@@ -108,5 +118,5 @@ function updateShowMoreButton() {
     }
 }
 // Add click handler to "Show More" button
-document.getElementById('showMoreBtn').addEventListener('click', showMoreImages); 
+// document.getElementById('showMoreBtn').addEventListener('click', showMoreImages); 
 document.addEventListener('DOMContentLoaded', initializeGallery);
