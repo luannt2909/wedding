@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(response => response.json())
             .then(data => {
                 data.images.forEach(image => {
-                    const item = createGalleryItem(image);
+                    const item = createGalleryItem(image, isChrome);
                     container.appendChild(item);
                 });
 
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
 
-    function createGalleryItem(image) {
+    function createGalleryItem(image, isChrome) {
         const div = document.createElement('div');
         div.className = 'gallery-item';
         div.innerHTML = `
