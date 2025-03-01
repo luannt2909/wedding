@@ -52,6 +52,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const container = document.querySelector(`#${tabId}-container`);
         const loadMoreBtn = document.querySelector(`.gallery-load-more button[data-tab="${tabId}"]`);
         loadMoreBtn.disabled = true;
+        const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+        const scrollPosition = isChrome ? window.scrollY : 0;
+
         
         fetch(`https://api.luananh-wedding.com/gallery/${tabId}?page=${tabContainers[tabId].page}&pageSize=${pageSize}`)
             .then(response => response.json())
@@ -67,6 +70,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Hide load more button if no more images
                 if (data.images.length < pageSize) {
                     loadMoreBtn.style.display = 'none';
+                }
+
+                if (isChrome) {
+                    window.scrollTo(0, scrollPosition);
                 }
 
                 // Reinitialize Magnific Popup
@@ -94,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
         div.className = 'gallery-item';
         div.innerHTML = `
             <a href="${image.url}" download="${image.caption || ''}" class="gallery-popup" title="${image.caption || ''}">
-                <img src="${image.url}" alt="${image.caption || ''}" loading="eager">
+                <img src="${image.url}" alt="${image.caption || ''}" loading="${isChrome ? 'eager' : 'lazy'}">
             </a>
         `;
         return div;
