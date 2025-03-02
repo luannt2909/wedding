@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(response => response.json())
             .then(data => {
                 data.images.forEach(image => {
-                    const item = createGalleryItem(image, isChrome);
+                    const item = createGalleryItem(image);
                     container.appendChild(item);
                 });
 
